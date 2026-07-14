@@ -1,6 +1,8 @@
 import Banner from "./component/Home/Banner";
+import connectDB from "@/lib/mongodb";
+export default async function Home() {
+  await connectDB();
 
-export default function Home() {
   return (
     <div>
       <Banner></Banner>
