@@ -1,7 +1,47 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import Swal from "sweetalert2";
 
 export default function RegisterPage() {
+  const router = useRouter();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [photo, setPhoto] = useState("");
+  const handleRegister = async (e) => {
+    e.preventDefault();
+
+    const res = await fetch("/api/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        password,
+        photo,
+      }),
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Successfully Registered",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      router.push("/");
+    } else {
+      alert(data.message);
+    }
+  };
   return (
     <div className="min-h-screen flex items-center justify-center bg-base-200 px-4 py-10">
       <div className="w-full max-w-6xl bg-base-100 rounded-3xl shadow-2xl overflow-hidden grid lg:grid-cols-2">
@@ -45,7 +85,7 @@ export default function RegisterPage() {
               </p>
             </div>
 
-            <form className="space-y-5">
+            <form className="space-y-5" onSubmit={handleRegister}>
               {/* Full Name */}
               <div>
                 <label className="label">
@@ -54,6 +94,8 @@ export default function RegisterPage() {
 
                 <input
                   type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                   placeholder="Enter your full name"
                   className="input input-bordered w-full"
                 />
@@ -67,6 +109,8 @@ export default function RegisterPage() {
 
                 <input
                   type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
                   className="input input-bordered w-full"
                 />
@@ -80,13 +124,33 @@ export default function RegisterPage() {
 
                 <input
                   type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   placeholder="Create a password"
                   className="input input-bordered w-full"
                 />
               </div>
 
+              {/* Photo */}
+              <div>
+                <label className="label">
+                  <span className="label-text font-medium">Photo</span>
+                </label>
+
+                <input
+                  type="text"
+                  value={photo}
+                  onChange={(e) => setPhoto(e.target.value)}
+                  placeholder="Enter your photo"
+                  className="input input-bordered w-full"
+                />
+              </div>
+
               {/* Register Button */}
-              <button className="btn btn-warning w-full rounded-xl text-base">
+              <button
+                type="submit"
+                className="btn btn-warning w-full rounded-xl text-base"
+              >
                 Sign Up
               </button>
 

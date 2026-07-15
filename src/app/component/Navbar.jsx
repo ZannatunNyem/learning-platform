@@ -12,7 +12,7 @@ export default function Navbar() {
         <Link href="/instructor">Instructor</Link>
       </li>
       <li>
-        <Link href="/course">Course</Link>
+        <Link href="/dashboard">Dashboard</Link>
       </li>
     </>
   );
@@ -42,7 +42,24 @@ export default function Navbar() {
               tabIndex="-1"
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
-              {link}
+              <li>
+                <Link href="/">Home</Link>
+              </li>
+              <li>
+                <Link href="/instructor">Instructor</Link>
+              </li>
+              <li>
+                <Link href="/dashboard">Dashboard</Link>
+              </li>
+              <li>
+                <Link href="/dashboard/courses">All Courses</Link>
+              </li>
+              <li>
+                <Link href="/dashboard/progress">Progress</Link>
+              </li>
+              <li>
+                <Link href="/dashboard/profile">Profile</Link>
+              </li>
             </ul>
           </div>
           <div>

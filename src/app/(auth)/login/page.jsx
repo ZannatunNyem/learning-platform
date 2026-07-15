@@ -1,14 +1,57 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import Swal from "sweetalert2";
 
 export default function LoginPage() {
+  const router = useRouter();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    const result = await signIn("credentials", {
+      email,
+      password,
+      redirect: false,
+    });
+
+    if (result?.error) {
+      Swal.fire({
+        icon: "error",
+        title: "Login Failed",
+        text: "Invalid email or password",
+      });
+      return;
+    }
+
+    if (result?.ok) {
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Successfully Logged In",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+
+      router.push("/");
+      router.refresh();
+    }
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-base-200 px-4 py-10">
       <div className="w-full max-w-6xl bg-base-100 rounded-3xl shadow-2xl overflow-hidden grid lg:grid-cols-2">
         {/* Left Side */}
         <div className="relative hidden lg:block">
           <Image
-            src="/image/side 2.png" // Change to your image
+            src="/image/side 2.png"
             alt="Login"
             fill
             className="object-cover"
@@ -45,7 +88,7 @@ export default function LoginPage() {
               </p>
             </div>
 
-            <form className="space-y-5">
+            <form onSubmit={handleLogin} className="space-y-5">
               {/* Email */}
               <div>
                 <label className="label">
@@ -54,8 +97,11 @@ export default function LoginPage() {
 
                 <input
                   type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
                   className="input input-bordered w-full"
+                  required
                 />
               </div>
 
@@ -67,8 +113,11 @@ export default function LoginPage() {
 
                 <input
                   type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter your password"
                   className="input input-bordered w-full"
+                  required
                 />
               </div>
 
@@ -79,13 +128,19 @@ export default function LoginPage() {
                   <span className="label-text">Remember me</span>
                 </label>
 
-                <a className="text-sm text-warning font-medium hover:underline">
+                <a
+                  href="#"
+                  className="text-sm text-warning font-medium hover:underline"
+                >
                   Forgot Password?
                 </a>
               </div>
 
               {/* Login Button */}
-              <button className="btn btn-warning w-full rounded-xl text-base">
+              <button
+                type="submit"
+                className="btn btn-warning w-full rounded-xl text-base"
+              >
                 Login
               </button>
 
