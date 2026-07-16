@@ -12,18 +12,18 @@ export default function DashboardLayout({ children }) {
         <nav className="flex flex-col p-4 gap-2">
           <Link
             href="/dashboard"
-            className={`flex items-center gap-3 px-4 py-3 rounded-lg ${pathname === "/dashboard" ? "bg-gray-500" : "hover:bg-gray-500"}`}
+            className={`flex items-center gap-3 px-4 py-3 rounded-lg ${pathname === "/dashboard/courses" ? "bg-gray-500" : "hover:bg-gray-500"}`}
           >
             <LayoutDashboard size={20} />
-            Dashboard
+            All Courses
           </Link>
 
           <Link
             href="/dashboard/courses"
-            className={`flex items-center gap-3 px-4 py-3 rounded-lg ${pathname === "/dashboard/courses" ? "bg-gray-500" : "hover:bg-gray-500"}`}
+            className={`flex items-center gap-3 px-4 py-3 rounded-lg ${pathname === "/dashboard/my-courses" ? "bg-gray-500" : "hover:bg-gray-500"}`}
           >
             <BookOpen size={20} />
-            All Courses
+            My Courses
           </Link>
 
           <Link

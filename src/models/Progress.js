@@ -11,14 +11,20 @@ const progressSchema = new mongoose.Schema(
       type: Schema.Types.ObjectId,
       ref: "Course",
     },
+
+    enrolled: {
+      type: Boolean,
+      default: true,
+    },
     completed: {
       type: Boolean,
       default: false,
     },
-    lectureCompleted: {
-      type: Schema.Types.ObjectId,
-      ref: "Lecture",
-    },
+    lectureCompleted: [
+      {
+        type: Number,
+      },
+    ],
   },
   { timestamps: true },
 );
