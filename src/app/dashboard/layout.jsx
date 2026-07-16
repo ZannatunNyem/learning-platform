@@ -1,47 +1,52 @@
+"use client";
 import Link from "next/link";
+import { LayoutDashboard, BookOpen, ChartColumn, User } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 export default function DashboardLayout({ children }) {
+  const pathname = usePathname();
   return (
-    <div className="flex min-h-screen ">
+    <div className="flex min-h-screen">
       {/* Sidebar */}
-      <aside className="w-64   shadow-sm lg:block hidden">
+      <aside className="w-64 shadow-sm lg:block hidden ">
         <nav className="flex flex-col p-4 gap-2">
           <Link
             href="/dashboard"
-            className="px-4 py-3 rounded-lg hover:bg-green-100"
+            className={`flex items-center gap-3 px-4 py-3 rounded-lg ${pathname === "/dashboard" ? "bg-gray-500" : "hover:bg-gray-500"}`}
           >
-            📊 Dashboard
+            <LayoutDashboard size={20} />
+            Dashboard
           </Link>
 
           <Link
             href="/dashboard/courses"
-            className="px-4 py-3 rounded-lg hover:bg-green-100"
+            className={`flex items-center gap-3 px-4 py-3 rounded-lg ${pathname === "/dashboard/courses" ? "bg-gray-500" : "hover:bg-gray-500"}`}
           >
-            📚 All Courses
+            <BookOpen size={20} />
+            All Courses
           </Link>
 
           <Link
             href="/dashboard/progress"
-            className="px-4 py-3 rounded-lg hover:bg-green-100"
+            className={`flex items-center gap-3 px-4 py-3 rounded-lg ${pathname === "/dashboard/progress" ? "bg-gray-500" : "hover:bg-gray-500"}`}
           >
-            📈 Progress
+            <ChartColumn size={20} />
+            Progress
           </Link>
 
           <Link
             href="/dashboard/profile"
-            className="px-4 py-3 rounded-lg hover:bg-green-100"
+            className={`flex items-center gap-3 px-4 py-3 rounded-lg ${pathname === "/dashboard/profile" ? "bg-gray-500" : "hover:bg-gray-500"}`}
           >
-            👤 Profile
+            <User size={20} />
+            Profile
           </Link>
         </nav>
       </aside>
 
       {/* Right Side */}
-      <div className="flex-1 flex flex-col">
-        {/* Top Navbar */}
-
-        {/* Page Content */}
-        <main className="flex-1 p-8">{children}</main>
+      <div className="flex-1 border-l border-gray-700">
+        <main className="p-8">{children}</main>
       </div>
     </div>
   );

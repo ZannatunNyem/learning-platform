@@ -1,5 +1,21 @@
-import React from "react";
+import CourseCard from "@/app/component/CourseCard";
 
-export default function page() {
-  return <div>page</div>;
+async function getCourses() {
+  const res = await fetch("http://localhost:3000/api/courses", {
+    cache: "no-store",
+  });
+
+  return res.json();
+}
+
+export default async function CoursesPage() {
+  const courses = await getCourses();
+
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {courses.map((course) => (
+        <CourseCard key={course._id} course={course} />
+      ))}
+    </div>
+  );
 }
