@@ -1,7 +1,9 @@
-"use client";
-import React, { useEffect } from "react";
+import { getServerSession } from "next-auth";
+import { authentication } from "@/lib/auth";
+import React from "react";
 
-export default function Banner() {
+export default async function Banner() {
+  const session = await getServerSession(authentication);
   return (
     <section
       className="relative overflow-hidden rounded-3xl bg-cover bg-center bg-no-repeat"
@@ -12,7 +14,9 @@ export default function Banner() {
       <div className="grid min-h-[600px] grid-cols-1 lg:grid-cols-2 items-center px-8 lg:px-16">
         {/* Left */}
         <div>
-          <p className="mb-5 text-lg text-white">Welcome back, Arif! 👋</p>
+          <p className="mb-5 text-lg text-white">
+            {/* Welcome back, Hi, {session.user.name} 👋 */}
+          </p>
 
           <h1 className="text-6xl font-bold text-white leading-tight">
             Start learning,

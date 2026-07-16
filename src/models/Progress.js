@@ -4,12 +4,13 @@ const { Schema } = mongoose;
 const progressSchema = new mongoose.Schema(
   {
     userID: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
+      type: String,
+      required: true,
     },
+
     courseID: {
-      type: Schema.Types.ObjectId,
-      ref: "Course",
+      type: String,
+      required: true,
     },
 
     enrolled: {

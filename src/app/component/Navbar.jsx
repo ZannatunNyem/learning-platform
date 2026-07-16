@@ -1,8 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { getServerSession } from "next-auth";
+import { authentication } from "@/lib/auth";
+import LogoutButton from "./button/LogoutButton";
 
-export default function Navbar() {
+export default async function Navbar() {
+  const session = await getServerSession(authentication);
+  console.log(session);
   const link = (
     <>
       <li>
@@ -89,9 +94,27 @@ export default function Navbar() {
               </div>
             </div>
             {/* Login Button */}
-            <Link href="/login" className="btn btn-warning rounded-xl px-6">
-              Login
-            </Link>
+            {session ? (
+              <>
+                <div className="dropdown dropdown-end">
+                  <div
+                    tabIndex={0}
+                    role="button"
+                    className="btn btn-ghost btn-circle avatar"
+                  >
+                    <div className="w-10 rounded-full">
+                      {/* <img alt="User Avatar" src={session.user.image} /> */}
+                    </div>
+                  </div>
+                </div>
+
+                <LogoutButton />
+              </>
+            ) : (
+              <Link href="/login" className="btn btn-warning rounded-xl px-6">
+                Login
+              </Link>
+            )}
           </div>
         </div>
       </div>

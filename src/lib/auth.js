@@ -5,6 +5,8 @@ import connectDB from "./mongodb";
 // import { connectDB } from "./mongodb";
 
 export const authentication = {
+  secret: process.env.NEXTAUTH_SECRET,
+
   providers: [
     Credentials({
       name: "Credentials",

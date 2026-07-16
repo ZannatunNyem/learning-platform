@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 const userSchema = new mongoose.Schema(
   {
-    name: String, // String is shorthand for {type: String}
+    name: String,
     email: String,
     password: String,
     image: String,
