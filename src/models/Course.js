@@ -12,8 +12,8 @@ const courseSchema = new mongoose.Schema({
   },
   lectures: [
     {
+      id: Number,
       title: String,
-      duration: String,
     },
   ],
 });

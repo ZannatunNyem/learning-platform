@@ -1,4 +1,5 @@
 import Link from "next/link";
+import EnrollButton from "./button/EnrollButton";
 
 export default function CourseCard({ course }) {
   return (
@@ -26,9 +27,7 @@ export default function CourseCard({ course }) {
         </span>
         {/* Level + Enroll Button */}
         <div className="flex  items-center justify-between mt-4">
-          <button className="btn bg-green-600 hover:bg-green-700 px-6 py-3 text-base border-0">
-            Enroll
-          </button>
+          <EnrollButton courseID={course._id} />
           <button className="btn bg-green-600 hover:bg-green-700 px-6 py-3 text-base border-0">
             <Link href={`/dashboard/courses/${course._id}`}>View Course</Link>
           </button>

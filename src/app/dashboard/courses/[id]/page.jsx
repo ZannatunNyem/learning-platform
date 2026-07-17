@@ -3,6 +3,7 @@ import connectDB from "@/lib/mongodb";
 import { getServerSession } from "next-auth";
 import { authentication } from "@/lib/auth";
 import EnrollButton from "@/app/component/button/EnrollButton";
+import CompleteButton from "@/app/component/button/CompleteButton";
 
 async function getCourse(id) {
   const res = await fetch(`http://localhost:3000/api/courses/${id}`, {
@@ -83,9 +84,7 @@ export default async function CourseDetails({ params }) {
               </div>
 
               {isEnrolled ? (
-                <button className="btn btn-success btn-sm">
-                  Mark Complete
-                </button>
+                <CompleteButton courseID={id} lectureID={lecture.id} />
               ) : (
                 <button className="btn btn-disabled btn-sm" disabled>
                   Locked

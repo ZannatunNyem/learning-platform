@@ -21,11 +21,10 @@ const progressSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    lectureCompleted: [
-      {
-        type: Number,
-      },
-    ],
+    lectureCompleted: {
+      type: [Number],
+      default: [],
+    },
   },
   { timestamps: true },
 );
