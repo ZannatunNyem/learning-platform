@@ -1,3 +1,11 @@
+export default function UsersPage() {
+  return (
+    <div className="p-6">
+      <h1 className="text-3xl font-bold">Manage Users</h1>
+      <p>Coming soon...</p>
+    </div>
+  );
+}
 // import connectDB from "@/lib/mongodb";
 // import User from "@/models/User";
 // import Progress from "@/models/Progress";
