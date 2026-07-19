@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { signIn } from "next-auth/react";
+import { signIn, getSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Swal from "sweetalert2";
@@ -32,6 +32,7 @@ export default function LoginPage() {
     }
 
     if (result?.ok) {
+      const session = await getSession();
       Swal.fire({
         position: "top-end",
         icon: "success",
@@ -40,7 +41,11 @@ export default function LoginPage() {
         timer: 1500,
       });
 
-      router.push("/");
+      if (session?.user?.role === "admin") {
+        router.push("/admin");
+      } else {
+        router.push("/");
+      }
       router.refresh();
     }
   };

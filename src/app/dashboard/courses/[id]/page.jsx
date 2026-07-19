@@ -27,6 +27,7 @@ export default async function CourseDetails({ params }) {
   const session = await getServerSession(authentication);
 
   let isEnrolled = false;
+  let completedLectures = [];
 
   if (session) {
     const progress = await Progress.findOne({
@@ -35,7 +36,10 @@ export default async function CourseDetails({ params }) {
       enrolled: true,
     });
 
-    isEnrolled = !!progress;
+    if (progress) {
+      isEnrolled = true;
+      completedLectures = progress.lectureCompleted || [];
+    }
   }
 
   return (
@@ -70,28 +74,36 @@ export default async function CourseDetails({ params }) {
         <h2 className="text-2xl font-bold mb-4">Course Lectures</h2>
 
         <div className="space-y-3">
-          {course.lectures.map((lecture, index) => (
-            <div
-              key={index}
-              className="border rounded-xl p-4 flex justify-between items-center"
-            >
-              <div>
-                <h3 className="font-semibold flex items-center gap-2">
-                  {isEnrolled ? "🔓" : "🔒"} {index + 1}. {lecture.title}
-                </h3>
+          {course.lectures.map((lecture, index) => {
+            const isCompleted = completedLectures.includes(lecture.id);
 
-                <p className="text-sm text-gray-500">{lecture.duration}</p>
+            return (
+              <div
+                key={lecture.id}
+                className="border rounded-xl p-4 flex justify-between items-center"
+              >
+                <div>
+                  <h3 className="font-semibold flex items-center gap-2">
+                    {isEnrolled ? " " : "🔒"} {index + 1}. {lecture.title}
+                  </h3>
+                </div>
+
+                {isEnrolled ? (
+                  isCompleted ? (
+                    <button className="btn btn-success btn-sm" disabled>
+                      Completed Course
+                    </button>
+                  ) : (
+                    <CompleteButton courseID={id} lectureID={lecture.id} />
+                  )
+                ) : (
+                  <button className="btn btn-disabled btn-sm" disabled>
+                    Locked
+                  </button>
+                )}
               </div>
-
-              {isEnrolled ? (
-                <CompleteButton courseID={id} lectureID={lecture.id} />
-              ) : (
-                <button className="btn btn-disabled btn-sm" disabled>
-                  Locked
-                </button>
-              )}
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {!isEnrolled && (

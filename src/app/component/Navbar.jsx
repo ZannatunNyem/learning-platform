@@ -8,25 +8,42 @@ import LogoutButton from "./button/LogoutButton";
 export default async function Navbar() {
   const session = await getServerSession(authentication);
   console.log(session);
-  const link = (
-    <>
-      <li>
-        <Link href="/">Home</Link>
-      </li>
-      <li>
-        <Link href="/instructor">Instructor</Link>
-      </li>
-      <li>
-        <Link href="/dashboard">Dashboard</Link>
-      </li>
-    </>
-  );
+  const link =
+    session?.user?.role === "admin" ? (
+      <>
+        <li>
+          <Link href="/admin">Dashboard</Link>
+        </li>
+        <li>
+          <Link href="/admin/courses">Manage Courses</Link>
+        </li>
+        <li>
+          <Link href="/admin/courses/add">Add Courses</Link>
+        </li>
+      </>
+    ) : (
+      <>
+        <li>
+          <Link href="/">Home</Link>
+        </li>
+        {/* <li>
+          <Link href="/instructor">Instructor</Link>
+        </li> */}
+        <li>
+          <Link href="/dashboard/courses">Dashboard</Link>
+        </li>
+      </>
+    );
   return (
     <div>
-      <div className="navbar bg-base-100 shadow-sm">
+      <div className="navbar py-5 bg-[var(--color-navbar)] py-2 font-semibold text-gray-700 ">
         <div className="navbar-start pl-2">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost text-black lg:hidden"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -45,55 +62,55 @@ export default async function Navbar() {
             </div>
             <ul
               tabIndex="-1"
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-gray-200 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
-              <li>
-                <Link href="/">Home</Link>
-              </li>
-              <li>
-                <Link href="/instructor">Instructor</Link>
-              </li>
-              <li>
-                <Link href="/dashboard">Dashboard</Link>
-              </li>
-              <li>
-                <Link href="/dashboard/courses">All Courses</Link>
-              </li>
-              <li>
-                <Link href="/dashboard/progress">Progress</Link>
-              </li>
-              <li>
-                <Link href="/dashboard/profile">Profile</Link>
-              </li>
+              {session?.user?.role === "admin" ? (
+                <>
+                  <li>
+                    <Link href="/admin">Dashboard</Link>
+                  </li>
+                  <li>
+                    <Link href="/admin/courses">Manage Courses</Link>
+                  </li>
+                  <li>
+                    <Link href="/admin/courses/add">Add Courses</Link>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <Link href="/">Home</Link>
+                  </li>
+                  {/* <li>
+                    <Link href="/instructor">Instructor</Link>
+                  </li> */}
+                  <li>
+                    <Link href="/dashboard/courses">Dashboard</Link>
+                  </li>
+                  <li>
+                    <Link href="/dashboard/courses">All Courses</Link>
+                  </li>
+                  <li>
+                    <Link href="/dashboard/progress">Progress</Link>
+                  </li>
+                  <li>
+                    <Link href="/dashboard/profile">Profile</Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
           <div>
-            <Link href="/instructor">
-              <Image src="/image/logo.png" width={50} height={50} />
+            <Link href="/">
+              <Image src="/image/mylogo.png" width={50} height={50} />
             </Link>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{link}</ul>
+          <ul className="menu  menu-horizontal px-1">{link}</ul>
         </div>
         <div className="navbar-end pr-5">
           <div className="flex items-center gap-3">
-            {/* Avatar Dropdown */}
-            <div className="dropdown dropdown-end">
-              <div
-                tabIndex={0}
-                role="button"
-                className="btn btn-ghost btn-circle avatar"
-              >
-                <div className="w-10 rounded-full">
-                  <img
-                    alt="User Avatar"
-                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                  />
-                </div>
-              </div>
-            </div>
-            {/* Login Button */}
             {session ? (
               <>
                 <div className="dropdown dropdown-end">
@@ -103,7 +120,10 @@ export default async function Navbar() {
                     className="btn btn-ghost btn-circle avatar"
                   >
                     <div className="w-10 rounded-full">
-                      {/* <img alt="User Avatar" src={session.user.image} /> */}
+                      <img
+                        src={session.user.image || "/image/user.jpg"}
+                        alt={session.user.name || "User Avatar"}
+                      />
                     </div>
                   </div>
                 </div>
@@ -111,9 +131,17 @@ export default async function Navbar() {
                 <LogoutButton />
               </>
             ) : (
-              <Link href="/login" className="btn btn-warning rounded-xl px-6">
-                Login
-              </Link>
+              <>
+                <div className="avatar">
+                  <div className="w-10 rounded-full">
+                    <img src="/image/user.jpg" alt="Default User" />
+                  </div>
+                </div>
+
+                <Link href="/login" className="btn btn-warning rounded-xl px-6">
+                  Login
+                </Link>
+              </>
             )}
           </div>
         </div>

@@ -59,27 +59,32 @@ export default async function ProgressPage() {
       <h1 className="text-3xl font-bold mb-8">My Progress</h1>
 
       {/* Stats */}
+      {/* Stats */}
+      {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
-        <div className="bg-base-200 rounded-xl p-5 text-center">
-          <h2 className="text-3xl font-bold">{enrolledCourses}</h2>
-          <p>Enrolled Courses</p>
+        <div className="rounded-2xl p-6 text-center bg-gradient-to-br from-orange-500  to-pink-500 text-white shadow-lg  ">
+          <h2 className="text-4xl font-bold">{enrolledCourses}</h2>
+          <p className="mt-2 text-white/90 font-medium">Enrolled Courses</p>
         </div>
 
-        <div className="bg-base-200 rounded-xl p-5 text-center">
-          <h2 className="text-3xl font-bold">{completedCourses}</h2>
-          <p>Completed Courses</p>
+        <div className="rounded-2xl p-6 text-center bg-gradient-to-br from-green-600  to-emerald-700 text-white shadow-lg ">
+          <h2 className="text-4xl font-bold">{completedCourses}</h2>
+          <p className="mt-2 text-white/90 font-medium">Completed Courses</p>
         </div>
 
-        <div className="bg-base-200 rounded-xl p-5 text-center">
-          <h2 className="text-3xl font-bold">{completedLectures}</h2>
-          <p>Completed Lectures</p>
+        <div className="rounded-2xl p-6 text-center bg-gradient-to-br from-purple-700  to-blue-500 text-white shadow-lg ">
+          <h2 className="text-4xl font-bold">{completedLectures}</h2>
+          <p className="mt-2 text-white/90 font-medium">Completed Lectures</p>
         </div>
       </div>
 
       {/* Course Progress */}
       <div className="space-y-6">
         {progressData.map((course) => (
-          <div key={course.courseID} className="border rounded-xl p-5">
+          <div
+            key={course.courseID}
+            className="bg-gray-100 shadow-lg rounded-xl p-5"
+          >
             <h2 className="text-xl font-bold">{course.title}</h2>
 
             <p className="my-2">

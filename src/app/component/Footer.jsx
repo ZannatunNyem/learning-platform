@@ -9,7 +9,7 @@ export default function Footer() {
         <aside>
           <div>
             <Link href="/">
-              <Image src="/image/logo.png" width={50} height={50} />
+              <Image src="/image/mylogo.png" width={50} height={50} />
             </Link>
           </div>
           <p>

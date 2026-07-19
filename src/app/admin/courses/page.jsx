@@ -1,42 +1,24 @@
 import Link from "next/link";
-import { getServerSession } from "next-auth";
-
-import { authentication } from "@/lib/auth";
 import connectDB from "@/lib/mongodb";
-import Progress from "@/models/Progress";
 import Course from "@/models/Course";
+import DeleteCourseButton from "@/app/component/button/DeleteCourseButton";
 
-export default async function MyCoursesPage() {
+export default async function ManageCoursesPage() {
   await connectDB();
 
-  const session = await getServerSession(authentication);
-
-  if (!session) {
-    return (
-      <div className="p-10 text-center">
-        <h1 className="text-2xl font-bold">Please login first.</h1>
-      </div>
-    );
-  }
-
-  // Get enrolled courses
-  const progress = await Progress.find({
-    userID: session.user.id,
-    enrolled: true,
-  });
-
-  // Get course IDs
-  const courseIds = progress.map((item) => item.courseID);
-
-  // Get course details
-  const courses = await Course.find({
-    _id: { $in: courseIds },
-  });
+  const courses = await Course.find();
 
   return (
-    <div className="max-w-5xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-8">My Courses</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="p-6">
+      <div className="flex justify-between mb-6">
+        <h1 className="text-3xl font-bold text-gray-600">Manage Courses</h1>
+
+        <Link href="/admin/courses/add" className="btn btn-primary">
+          Add Course
+        </Link>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {courses.map((course) => (
           <div
             key={course._id}
@@ -61,7 +43,7 @@ export default async function MyCoursesPage() {
                 {course.title}
               </h2>
 
-              <div className="mt-3 flex items-center justify-between mb-5">
+              <div className="mt-3 flex items-center justify-between">
                 <span className="text-sm font-medium text-green-600">
                   {course.level}
                 </span>
@@ -71,12 +53,9 @@ export default async function MyCoursesPage() {
                 </span>
               </div>
 
-              <Link
-                href={`/dashboard/courses/${course._id}`}
-                className="btn btn-primary mt-auto w-full"
-              >
-                Continue Learning
-              </Link>
+              <div className="mt-auto pt-5 ">
+                <DeleteCourseButton id={course._id.toString()} />
+              </div>
             </div>
           </div>
         ))}

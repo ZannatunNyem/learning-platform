@@ -10,7 +10,7 @@ export default function RegisterPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [photo, setPhoto] = useState("");
+  const [image, setImage] = useState("");
   const handleRegister = async (e) => {
     e.preventDefault();
 
@@ -23,7 +23,7 @@ export default function RegisterPage() {
         name,
         email,
         password,
-        photo,
+        image,
       }),
     });
 
@@ -139,9 +139,9 @@ export default function RegisterPage() {
 
                 <input
                   type="text"
-                  value={photo}
-                  onChange={(e) => setPhoto(e.target.value)}
-                  placeholder="Enter your photo"
+                  value={image}
+                  onChange={(e) => setImage(e.target.value)}
+                  placeholder="Enter your photo URL"
                   className="input input-bordered w-full"
                 />
               </div>

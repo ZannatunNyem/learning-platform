@@ -1,7 +1,8 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Swal from "sweetalert2";
 
 export default function EnrollButton({ courseID }) {
   const router = useRouter();
@@ -23,14 +24,32 @@ export default function EnrollButton({ courseID }) {
 
       const data = await res.json();
 
-      alert(data.message);
-
       if (res.ok) {
+        await Swal.fire({
+          icon: "success",
+          title: "Enrolled Successfully!",
+          text: data.message,
+          confirmButtonColor: "#3b82f6",
+        });
+
         router.push("/my-courses");
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Enrollment Failed",
+          text: data.message,
+          confirmButtonColor: "#ef4444",
+        });
       }
     } catch (error) {
       console.error(error);
-      alert("Something went wrong.");
+
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong.",
+        confirmButtonColor: "#ef4444",
+      });
     } finally {
       setLoading(false);
     }
@@ -38,7 +57,7 @@ export default function EnrollButton({ courseID }) {
 
   return (
     <button
-      className="btn btn-primary mt-4"
+      className="btn btn-primary"
       onClick={handleEnroll}
       disabled={loading}
     >

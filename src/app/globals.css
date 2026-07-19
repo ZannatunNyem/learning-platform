@@ -1,15 +1,42 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* 🌸 Main Body Background (Soft Peach) */
+  --color-body: #f2e7fe;
+
+  /* 🌷 Navbar Background (Soft Pink) */
+  --color-navbar: #f2e7fe;
+
+  /* 🤍 Card Background */
+  --color-card: #f1bbbb;
+
+  /* 🌼 Sidebar Background (Light Cream) */
+  --color-sidebar: #dfdffc;
+
+  /* 🩶 Border Color */
+  --color-border: #ece7e4;
+
+  /* 🖤 Primary Text */
+  --color-text: #1f2937;
+
+  /* 🩶 Secondary Text */
+  --color-text-light: #6b7280;
+
+  /* 🌺 Primary Pink */
+  --color-primary: #08721f;
+
+  /* 🧡 Accent Orange */
+  --color-accent: #da4641;
+
+  /* 💚 Success Green */
+  --color-success: #1a7e45;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-marcellus);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,7 +49,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-marcellus), serif;
 }
 
 @keyframes float {
@@ -32,10 +59,10 @@ body {
   }
 
   50% {
-    transform: translateY(-15px);
+    transform: translateY(-18px);
   }
 }
 
 .animate-float {
-  animation: float 3s ease-in-out infinite;
+  animation: float 2s ease-in-out infinite;
 }

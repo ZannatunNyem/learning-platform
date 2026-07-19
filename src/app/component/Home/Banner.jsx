@@ -1,35 +1,42 @@
 import { getServerSession } from "next-auth";
 import { authentication } from "@/lib/auth";
 import React from "react";
+import { Sparkles } from "lucide-react";
+import Link from "next/link";
 
 export default async function Banner() {
   const session = await getServerSession(authentication);
   return (
     <section
-      className="relative overflow-hidden rounded-3xl bg-cover bg-center bg-no-repeat"
+      className="   max-w-7xl mx-auto
+    relative overflow-hidden
+    rounded-3xl
+    bg-cover bg-center bg-no-repeat
+    h-74 md:h-100 lg:h-[600px]"
       style={{
         backgroundImage: "url('/image/banner.png')",
       }}
     >
-      <div className="grid min-h-[600px] grid-cols-1 lg:grid-cols-2 items-center px-8 lg:px-16">
+      <div className="grid min-h-[600px]  grid-cols-1 lg:grid-cols-2 items-center px-6 lg:px-16 py-4 lg:py-0">
         {/* Left */}
         <div>
-          <p className="mb-5 text-lg text-white">
-            {/* Welcome back, Hi, {session.user.name} 👋 */}
+          <p className="my-4 flex items-center gap-2 text-xl md:text-2xl font-semibold text-white">
+            Welcome back {session?.user?.name || ""}
+            <Sparkles className="w-6 h-6 text-yellow-300 fill-yellow-300" />
           </p>
 
-          <h1 className="text-6xl font-bold text-white leading-tight">
+          <h1 className="md:text-6xl text-3xl font-bold text-white leading-tight">
             Start learning,
             <br />
             achieve <span className="text-yellow-300">greatness.</span>
           </h1>
 
-          <p className="mt-6 text-xl text-white/90 max-w-lg">
+          <p className="md:mt-6 mt-4 md:text-xl text-sm text-white/90 max-w-lg">
             Explore new skills, track your progress and reach your goals.
           </p>
 
-          <button className="btn btn-warning btn-lg mt-8 rounded-full px-8">
-            Continue Learning →
+          <button className="btn btn-warning btn-lg md:mt-8 mt-6  rounded-full px-8">
+            <Link href="/dashboard/courses">Continue Learning →</Link>
           </button>
         </div>
 
@@ -60,7 +67,7 @@ export default async function Banner() {
           <img
             src="/image/1.png"
             alt=""
-            className="absolute top-28 -right-10 w-38 animate-float"
+            className="absolute top-28 -right-15 w-38 animate-float"
           />
         </div>
       </div>
