@@ -58,9 +58,6 @@ export default async function ProgressPage() {
     <div className="max-w-5xl mx-auto p-6">
       <h1 className="text-3xl font-bold mb-8">My Progress</h1>
 
-      {/* Stats */}
-      {/* Stats */}
-      {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
         <div className="rounded-2xl p-6 text-center bg-gradient-to-br from-orange-500  to-pink-500 text-white shadow-lg  ">
           <h2 className="text-4xl font-bold">{enrolledCourses}</h2>
@@ -78,7 +75,6 @@ export default async function ProgressPage() {
         </div>
       </div>
 
-      {/* Course Progress */}
       <div className="space-y-6">
         {progressData.map((course) => (
           <div

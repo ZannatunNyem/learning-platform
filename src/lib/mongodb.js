@@ -12,24 +12,3 @@ async function connectDB() {
   return mongoose;
 }
 export default connectDB;
-
-// import { MongoClient, ServerApiVersion } from "mongodb";
-
-// const uri = process.env.MONGO_URI;
-
-// //const client = new MongoClient(uri);
-// const client = new MongoClient(uri, {
-//   serverApi: {
-//     version: ServerApiVersion.v1,
-//     strict: true,
-//     deprecationErrors: true,
-//   },
-// });
-
-// const connectDB = async () => {
-//   await client.connect();
-//   console.log("✅ Connected to MongoDB Atlas");
-//   return client.db("learning-platform"); // Your database name
-// };
-
-// export default connectDB;

@@ -44,7 +44,6 @@ export default async function CourseDetails({ params }) {
 
   return (
     <div className="max-w-5xl mx-auto p-6">
-      {/* Thumbnail */}
       <img
         src={course.thumbnail}
         alt={course.title}
@@ -53,7 +52,6 @@ export default async function CourseDetails({ params }) {
         className="w-full h-80 object-cover rounded-xl"
       />
 
-      {/* Course Info */}
       <div className="mt-6">
         <h1 className="text-4xl font-bold">{course.title}</h1>
 
@@ -69,7 +67,6 @@ export default async function CourseDetails({ params }) {
         </p>
       </div>
 
-      {/* Lectures */}
       <div className="mt-10">
         <h2 className="text-2xl font-bold mb-4">Course Lectures</h2>
 

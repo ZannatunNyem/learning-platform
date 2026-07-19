@@ -4,7 +4,6 @@ import EnrollButton from "./button/EnrollButton";
 export default function CourseCard({ course }) {
   return (
     <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden flex flex-col min-h-[230px]">
-      {/* Image */}
       <div className="relative">
         <img
           src={course.thumbnail}
@@ -17,7 +16,6 @@ export default function CourseCard({ course }) {
         </span>
       </div>
 
-      {/* Content */}
       <div className="flex flex-col flex-1 p-5">
         <h2 className="text-lg font-bold text-gray-800 line-clamp-2">
           {course.title}

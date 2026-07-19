@@ -57,7 +57,7 @@ export default function AddCoursePage() {
         icon: "success",
         title: "Success!",
         text: "Course added successfully.",
-        confirmButtonColor: "#f59e0b", // Amber
+        confirmButtonColor: "#f59e0b",
       });
 
       router.push("/admin/courses");

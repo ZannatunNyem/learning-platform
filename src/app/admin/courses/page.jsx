@@ -24,7 +24,6 @@ export default async function ManageCoursesPage() {
             key={course._id}
             className="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden flex flex-col"
           >
-            {/* Image */}
             <div className="relative">
               <img
                 src={course.thumbnail}
@@ -37,7 +36,6 @@ export default async function ManageCoursesPage() {
               </span>
             </div>
 
-            {/* Content */}
             <div className="flex flex-col flex-1 p-5">
               <h2 className="text-lg font-bold text-gray-800 line-clamp-2">
                 {course.title}

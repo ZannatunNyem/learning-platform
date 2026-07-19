@@ -29,27 +29,27 @@ export async function POST(req) {
       );
     }
 
-    // Already completed?
+    // completed
     if (progress.lectureCompleted.includes(lectureID)) {
       return Response.json({
         message: "Lecture already completed.",
       });
     }
 
-    // Add lecture
+    // add lecture
     progress.lectureCompleted.push(lectureID);
 
-    // Get total lectures
+    //total lectures
     const course = await Courses.findById(courseID);
 
     const totalLectures = course.lectures.length;
 
-    // Calculate percentage
+    //percentage
     progress.progressPercent = Math.round(
       (progress.lectureCompleted.length / totalLectures) * 100,
     );
 
-    // Course completed?
+    //completed
     if (progress.lectureCompleted.length === totalLectures) {
       progress.completed = true;
     }

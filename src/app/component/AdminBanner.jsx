@@ -16,7 +16,6 @@ export default async function AdminBanner() {
   return (
     <div className="bg-gradient-to-r from-emerald-400 via-teal-500 to-cyan-500 rounded-2xl p-6 shadow-lg text-white mb-8">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-        {/* Left Side */}
         <div>
           <div className="flex items-center gap-3 mb-2">
             <div className="bg-white/20 p-3 rounded-full">
@@ -40,7 +39,6 @@ export default async function AdminBanner() {
           </div>
         </div>
 
-        {/* Right Side */}
         <div>
           <Link
             href="/admin/courses/add"

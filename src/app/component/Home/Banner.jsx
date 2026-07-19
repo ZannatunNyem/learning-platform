@@ -22,7 +22,6 @@ export default async function Banner() {
 
       <div className="relative z-10 h-full">
         <div className="grid min-h-[600px]  grid-cols-1 lg:grid-cols-2 items-center px-6 lg:px-16 py-4 lg:py-0">
-          {/* Left */}
           <div>
             <p className="my-4 flex items-center gap-2 text-xl md:text-2xl font-semibold text-white">
               Welcome back {session?.user?.name || ""}
@@ -44,7 +43,6 @@ export default async function Banner() {
             </button>
           </div>
 
-          {/* Right */}
           <div className="relative h-[600px]">
             {/* Boy */}
             {/* <img
@@ -53,21 +51,21 @@ export default async function Banner() {
             className="absolute bottom-0 right-0 w-[600px]"
           /> */}
 
-            {/* Hat */}
+            {/* ///Hat ///*/}
             <img
               src="/image/3.png"
               alt=""
               className="absolute top-16 left-16 w-44 animate-float"
             />
 
-            {/* Play */}
+            {/*/// Play/// */}
             <img
               src="/image/2.png"
               alt=""
               className="absolute top-55 left-24 w-34 animate-float"
             />
 
-            {/* Progress */}
+            {/*/// Progress/// */}
             <img
               src="/image/1.png"
               alt=""

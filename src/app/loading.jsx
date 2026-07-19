@@ -1,10 +1,8 @@
 export default function Loading() {
   return (
     <main className="animate-pulse">
-      {/* Hero Banner */}
       <section className="max-w-7xl mx-auto mt-6 rounded-3xl bg-gray-100 overflow-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-2 items-center min-h-[600px] px-8 lg:px-16">
-          {/* Left */}
           <div>
             <div className="skeleton h-6 w-48 bg-gray-300 mb-6"></div>
 
@@ -21,16 +19,12 @@ export default function Loading() {
             <div className="skeleton h-14 w-56 rounded-full bg-gray-300"></div>
           </div>
 
-          {/* Right */}
           <div className="relative hidden lg:block h-full">
-            {/* Main Image */}
-
             <div className="skeleton absolute top-24 right-0 w-36 h-40 rounded-2xl bg-gray-300"></div>
           </div>
         </div>
       </section>
 
-      {/* Stats */}
       <section className="max-w-6xl mx-auto my-8 grid grid-cols-2 md:grid-cols-4 gap-4">
         {[1, 2, 3, 4].map((item) => (
           <div key={item} className="flex items-center gap-4 p-6">
@@ -44,7 +38,6 @@ export default function Loading() {
         ))}
       </section>
 
-      {/* Top Courses */}
       <section className="max-w-7xl mx-auto rounded-2xl bg-gray-100 shadow-lg p-8 my-8">
         <div className="skeleton h-7 w-40 bg-gray-300 mb-8"></div>
 
@@ -74,7 +67,7 @@ export default function Loading() {
           ))}
         </div>
       </section>
-      {/* Join Banner */}
+
       <section className="my-18 max-w-7xl mx-auto">
         <div className="rounded-2xl bg-gray-100 px-8 py-8 flex flex-col md:flex-row items-center justify-between">
           <div className="flex-1">
@@ -93,23 +86,18 @@ export default function Loading() {
         </div>
       </section>
 
-      {/* Top Instructors */}
       <section className="max-w-7xl mx-auto my-15">
         <div className="skeleton h-7 w-44 bg-gray-300 mb-8"></div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
           {[1, 2, 3, 4].map((item) => (
             <div key={item} className="p-2 text-center">
-              {/* Avatar */}
               <div className="skeleton w-35 h-35 rounded-full mx-auto bg-gray-300"></div>
 
-              {/* Name */}
               <div className="skeleton h-6 w-36 mx-auto mt-5 bg-gray-300"></div>
 
-              {/* Role */}
               <div className="skeleton h-4 w-28 mx-auto mt-3 bg-gray-300"></div>
 
-              {/* Rating */}
               <div className="flex justify-center gap-2 mt-4">
                 <div className="skeleton h-4 w-12 bg-gray-300"></div>
 

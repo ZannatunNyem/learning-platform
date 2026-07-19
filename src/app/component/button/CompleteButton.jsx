@@ -27,7 +27,7 @@ export default function CompleteButton({ courseID, lectureID }) {
       alert(data.message);
 
       if (res.ok) {
-        router.refresh(); // Refresh the page to get updated progress
+        router.refresh();
       }
     } catch (error) {
       console.error(error);

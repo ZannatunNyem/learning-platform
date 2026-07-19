@@ -1,10 +1,8 @@
 export default function Loading() {
   return (
     <div className="p-6 animate-pulse">
-      {/* Admin Banner */}
       <div className="rounded-2xl bg-gray-100 p-6 shadow-lg mb-8">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-          {/* Left */}
           <div>
             <div className="flex items-center gap-4">
               <div className="skeleton w-14 h-14 rounded-full bg-gray-300"></div>
@@ -19,12 +17,10 @@ export default function Loading() {
             <div className="skeleton h-5 w-52 bg-gray-300 mt-6"></div>
           </div>
 
-          {/* Right Button */}
           <div className="skeleton h-12 w-40 rounded-xl bg-gray-300"></div>
         </div>
       </div>
 
-      {/* Section Header */}
       <div className="flex items-center justify-between mt-15 mb-8 ml-10">
         <div>
           <div className="skeleton h-8 w-56 bg-gray-300 mb-3"></div>

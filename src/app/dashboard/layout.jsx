@@ -7,7 +7,6 @@ export default function DashboardLayout({ children }) {
   const pathname = usePathname();
   return (
     <div className="flex min-h-screen text-gray-700">
-      {/* Sidebar */}
       <aside className="w-64 shadow-lg lg:block hidden ">
         <nav className="flex flex-col p-4 gap-2 pt-10">
           <Link
@@ -44,7 +43,6 @@ export default function DashboardLayout({ children }) {
         </nav>
       </aside>
 
-      {/* Right Side */}
       <div className="flex-1  rounded-2xl bg-[var(--color-sidebar)]">
         <main className="p-8 rounded-2xl mx-5 ">{children}</main>
       </div>

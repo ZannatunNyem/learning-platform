@@ -8,7 +8,6 @@ export default async function ProfilePage() {
 
   return (
     <div className="max-w-5xl mx-auto p-6">
-      {/* Banner */}
       <div className="rounded-3xl bg-gradient-to-r from-amber-400 to-orange-400 p-8 text-white shadow-lg">
         <h1 className="text-3xl font-bold">My Profile</h1>
         <p className="mt-2 text-white/90">
@@ -16,7 +15,6 @@ export default async function ProfilePage() {
         </p>
       </div>
 
-      {/* Profile Card */}
       <div className="mt-8 bg-white rounded-3xl shadow-lg p-8">
         <div className="flex flex-col md:flex-row items-center gap-8">
           <div className="relative w-40 h-40">

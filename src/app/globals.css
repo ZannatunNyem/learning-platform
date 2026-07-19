@@ -2,34 +2,34 @@
 @plugin "daisyui";
 
 :root {
-  /* 🌸 Main Body Background (Soft Peach) */
+  /*  Main Body Background (Soft Peach) */
   --color-body: #f2e7fe;
 
-  /* 🌷 Navbar Background (Soft Pink) */
+  /*  Navbar Background (Soft Pink) */
   --color-navbar: #f2e7fe;
 
-  /* 🤍 Card Background */
+  /*  Card Background */
   --color-card: #f1bbbb;
 
-  /* 🌼 Sidebar Background (Light Cream) */
+  /*  Sidebar Background (Light Cream) */
   --color-sidebar: #dfdffc;
 
-  /* 🩶 Border Color */
+  /* Border Color */
   --color-border: #ece7e4;
 
-  /* 🖤 Primary Text */
+  /* Primary Text */
   --color-text: #1f2937;
 
-  /* 🩶 Secondary Text */
+  /*Secondary Text */
   --color-text-light: #6b7280;
 
-  /* 🌺 Primary Pink */
+  /* Primary Pink */
   --color-primary: #08721f;
 
-  /* 🧡 Accent Orange */
+  /* Accent Orange */
   --color-accent: #da4641;
 
-  /* 💚 Success Green */
+  /* Success Green */
   --color-success: #1a7e45;
 }
 

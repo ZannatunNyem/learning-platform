@@ -17,7 +17,6 @@ export default async function AdminLayout({ children }) {
 
   return (
     <div className="min-h-screen flex">
-      {/* Sidebar */}
       {/* <aside className="w-64 bg-base-200 p-6">
         <h2 className="text-2xl font-bold mb-8">Admin Panel</h2>
 
@@ -39,7 +38,6 @@ export default async function AdminLayout({ children }) {
         </ul>
       </aside> */}
 
-      {/* Content */}
       <main className="flex-1 p-8">{children}</main>
     </div>
   );

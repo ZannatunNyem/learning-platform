@@ -53,7 +53,6 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-base-200 px-4 py-10">
       <div className="w-full max-w-6xl bg-base-100 rounded-3xl shadow-2xl overflow-hidden grid lg:grid-cols-2">
-        {/* Left Side */}
         <div className="relative hidden lg:block">
           <Image
             src="/image/side 2.png"
@@ -74,7 +73,6 @@ export default function LoginPage() {
           </div>
         </div>
 
-        {/* Right Side */}
         <div className="flex items-center justify-center p-8 lg:p-14">
           <div className="w-full max-w-md">
             <div className="text-center mb-8">
@@ -94,7 +92,6 @@ export default function LoginPage() {
             </div>
 
             <form onSubmit={handleLogin} className="space-y-5">
-              {/* Email */}
               <div>
                 <label className="label">
                   <span className="label-text font-medium">Email</span>
@@ -110,7 +107,6 @@ export default function LoginPage() {
                 />
               </div>
 
-              {/* Password */}
               <div>
                 <label className="label">
                   <span className="label-text font-medium">Password</span>
@@ -141,7 +137,6 @@ export default function LoginPage() {
                 </a>
               </div>
 
-              {/* Login Button */}
               <button
                 type="submit"
                 className="btn btn-warning w-full rounded-xl text-base"
@@ -149,15 +144,15 @@ export default function LoginPage() {
                 Login
               </button>
 
-              <div className="divider">OR</div>
+              {/* <div className="divider">OR</div> */}
 
-              {/* Google */}
-              <button
+              {/* /////google/// */}
+              {/* <button
                 type="button"
                 className="btn btn-outline w-full rounded-xl"
               >
                 Continue with Google
-              </button>
+              </button> */}
 
               <p className="text-center text-sm mt-6">
                 Don't have an account?{" "}

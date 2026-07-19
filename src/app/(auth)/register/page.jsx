@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import { signIn } from "next-auth/react";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -30,6 +31,12 @@ export default function RegisterPage() {
     const data = await res.json();
 
     if (res.ok) {
+      await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
+
       Swal.fire({
         position: "top-end",
         icon: "success",
@@ -37,9 +44,9 @@ export default function RegisterPage() {
         showConfirmButton: false,
         timer: 1500,
       });
+
       router.push("/");
-    } else {
-      alert(data.message);
+      router.refresh();
     }
   };
   return (
@@ -48,7 +55,7 @@ export default function RegisterPage() {
         {/* Left Side */}
         <div className="relative hidden lg:block">
           <Image
-            src="/image/side 3.png" // Your register image
+            src="/image/side 3.png" // register image
             alt="Register"
             fill
             className="object-cover"
@@ -66,7 +73,6 @@ export default function RegisterPage() {
           </div>
         </div>
 
-        {/* Right Side */}
         <div className="flex items-center justify-center p-8 lg:p-14">
           <div className="w-full max-w-md">
             <div className="text-center mb-8">
@@ -86,7 +92,6 @@ export default function RegisterPage() {
             </div>
 
             <form className="space-y-5" onSubmit={handleRegister}>
-              {/* Full Name */}
               <div>
                 <label className="label">
                   <span className="label-text font-medium">Full Name</span>
@@ -101,7 +106,6 @@ export default function RegisterPage() {
                 />
               </div>
 
-              {/* Email */}
               <div>
                 <label className="label">
                   <span className="label-text font-medium">Email</span>
@@ -116,7 +120,6 @@ export default function RegisterPage() {
                 />
               </div>
 
-              {/* Password */}
               <div>
                 <label className="label">
                   <span className="label-text font-medium">Password</span>
@@ -131,7 +134,6 @@ export default function RegisterPage() {
                 />
               </div>
 
-              {/* Photo */}
               <div>
                 <label className="label">
                   <span className="label-text font-medium">Photo</span>
@@ -146,7 +148,6 @@ export default function RegisterPage() {
                 />
               </div>
 
-              {/* Register Button */}
               <button
                 type="submit"
                 className="btn btn-warning w-full rounded-xl text-base"
@@ -154,15 +155,15 @@ export default function RegisterPage() {
                 Sign Up
               </button>
 
-              <div className="divider">OR</div>
+              {/* <div className="divider">OR</div> */}
 
-              {/* Google */}
-              <button
+              {/* ///Google/// */}
+              {/* <button
                 type="button"
                 className="btn btn-outline w-full rounded-xl"
               >
                 Continue with Google
-              </button>
+              </button> */}
 
               <p className="text-center text-sm mt-6">
                 Already have an account?{" "}

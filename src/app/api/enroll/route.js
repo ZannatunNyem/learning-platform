@@ -9,7 +9,7 @@ export async function POST(req) {
     await connectDB();
     const session = await getServerSession(authentication);
 
-    console.log("😍", session);
+    console.log("my session is here", session);
 
     if (!session) {
       return NextResponse.json(
@@ -20,7 +20,7 @@ export async function POST(req) {
 
     const { courseID } = await req.json();
 
-    // Check if already enrolled
+    //////if already enrolled
     const existing = await Progress.findOne({
       userID: session.user.id,
       courseID,

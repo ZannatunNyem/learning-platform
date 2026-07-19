@@ -1,4 +1,5 @@
 import { GraduationCap } from "lucide-react";
+import Link from "next/link";
 
 export default function JoinBanner() {
   return (
@@ -15,9 +16,12 @@ export default function JoinBanner() {
         </div>
 
         <div className="flex items-center gap-5 mt-6 md:mt-0">
-          <button className="btn bg-white text-indigo-700 hover:bg-gray-100 border-none rounded-xl px-6">
-            Join Now
-          </button>
+          <Link href="/dashboard/courses">
+            {" "}
+            <button className="btn bg-white text-indigo-700 hover:bg-gray-100 border-none rounded-xl px-6">
+              Join Now
+            </button>
+          </Link>
 
           <div className="bg-white/10 p-4 rounded-full">
             <GraduationCap className="w-10 h-10 text-white" />

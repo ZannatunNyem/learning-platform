@@ -26,7 +26,6 @@ export default async function UsersPage() {
     <div className="p-6">
       <AdminBanner />
 
-      {/* Section Header */}
       <div className="flex items-center justify-between mt-15 mb-8 ml-10">
         <div>
           <h2 className="text-2xl font-bold text-gray-500">Manage Users</h2>
@@ -36,7 +35,6 @@ export default async function UsersPage() {
         </div>
       </div>
 
-      {/* Users Table */}
       <div className="overflow-x-auto rounded-2xl max-w-6xl mx-auto bg-blue-200 shadow-md">
         <table className="table ">
           <thead className="bg-blue-500  text-white">
