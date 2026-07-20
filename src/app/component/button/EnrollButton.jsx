@@ -32,7 +32,7 @@ export default function EnrollButton({ courseID }) {
           confirmButtonColor: "#3b82f6",
         });
 
-        router.push("/my-courses");
+        router.push("/dashboard/my-courses");
       } else {
         Swal.fire({
           icon: "error",
