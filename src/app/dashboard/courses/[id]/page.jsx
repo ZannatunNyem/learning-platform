@@ -6,7 +6,7 @@ import EnrollButton from "@/app/component/button/EnrollButton";
 import CompleteButton from "@/app/component/button/CompleteButton";
 
 async function getCourse(id) {
-  const res = await fetch(`http://localhost:3000/api/courses/${id}`, {
+  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/courses/${id}`, {
     cache: "no-store",
   });
 
